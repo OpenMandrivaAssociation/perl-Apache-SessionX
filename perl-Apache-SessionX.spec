@@ -22,7 +22,6 @@ BuildRequires:	perl(Mysql)
 BuildRequires:	perl(DBD::Pg)
 BuildRequires:  perl(DB_File)
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
 Apache::SessionX extends Apache::Session. It was initialy written to use
