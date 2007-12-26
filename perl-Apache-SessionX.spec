@@ -1,7 +1,7 @@
 %define module	Apache-SessionX
 %define name	perl-%{module}
 %define version	2.01
-%define release	%mkrel 3
+%define release	%mkrel 4
 %define testdir %{_tmppath}/%{name}-%{version}-test
 
 Name:		%{name}
@@ -18,8 +18,6 @@ Url:		http://search.cpan.org/dist/%{module}
 BuildRequires:	perl-devel
 %endif
 BuildRequires:	perl(Apache::Session)
-BuildRequires:	perl(Mysql)
-BuildRequires:	perl(DBD::Pg)
 BuildRequires:  perl(DB_File)
 BuildArch:	noarch
 BuildRoot:	%{_tmppath}/%{name}-%{version}
