@@ -65,14 +65,14 @@ export TESTDIR=%{testdir}
 %install
 %{__rm} -rf %{buildroot}
 %makeinstall_std
-install -d -m 755 %{buildroot}%{_localstatedir}/ApacheSessionX
+install -d -m 755 %{buildroot}%{_localstatedir}/lib/ApacheSessionX
 
 %files
 %defattr(-,root,root)
 %doc CHANGES README
 %{_mandir}/*/*
 %{perl_vendorlib}/Apache
-%attr(-,apache,apache) %{_localstatedir}/ApacheSessionX
+%attr(-,apache,apache) %{_localstatedir}/lib/ApacheSessionX
 
 
 
