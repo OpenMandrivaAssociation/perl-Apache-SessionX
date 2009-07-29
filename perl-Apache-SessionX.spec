@@ -1,26 +1,27 @@
-%define module	Apache-SessionX
-%define name	perl-%{module}
-%define version	2.01
-%define release	%mkrel 6
-%define testdir %{_tmppath}/%{name}-%{version}-test
+%define upstream_name	 Apache-SessionX
+%define upstream_version 2.01
 
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Name:		perl-%{upstream_name}
+Version:	%perl_convert_version %{upstream_version}
+Release:	%mkrel 2
+
 Summary:	An extented persistence framework for session data
-License:	GPL or Artistic
+License:	GPL+ or Artistic
 Group:		Development/Perl
-Source:		http://search.cpan.org/CPAN/authors/id/G/GR/GRICHTER/%{module}-%{version}.tar.bz2
+Url:		http://search.cpan.org/dist/%{upstream_name}
+Source0:	http://search.cpan.org/CPAN/authors/id/G/GR/GRICHTER/%{upstream_name}-%{upstream_version}.tar.bz2
 Patch0:		%{name}-2.01.fhs.patch
 Patch1:		%{name}-2.01.test.patch
-Url:		http://search.cpan.org/dist/%{module}
+
 %if %{mdkversion} < 1010
 BuildRequires:	perl-devel
 %endif
 BuildRequires:	perl(Apache::Session)
 BuildRequires:  perl(DB_File)
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}
+
+%define testdir %{_tmppath}/%{name}-%{version}-test
 
 %description
 Apache::SessionX extends Apache::Session. It was initialy written to use
@@ -43,7 +44,7 @@ The reader is encouraged to extend these capabilities to meet his own
 requirements.
 
 %prep
-%setup -q -n %{module}-%{version}
+%setup -q -n %{upstream_name}-%{upstream_version}
 chmod 644 README
 %patch0
 %patch1 -p 1
@@ -73,6 +74,3 @@ install -d -m 755 %{buildroot}%{_localstatedir}/lib/ApacheSessionX
 %{_mandir}/*/*
 %{perl_vendorlib}/Apache
 %attr(-,apache,apache) %{_localstatedir}/lib/ApacheSessionX
-
-
-
