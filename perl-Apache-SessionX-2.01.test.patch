@@ -1,0 +1,46 @@
+diff -Naur Apache-SessionX-2.01/test.pl Apache-SessionX-2.01.test/test.pl
+--- Apache-SessionX-2.01/test.pl	2003-03-02 15:15:03.000000000 +0100
++++ Apache-SessionX-2.01.test/test.pl	2005-11-28 14:53:35.000000000 +0100
+@@ -19,7 +19,9 @@
+     }
+ else
+     {
+-    @tests = @Apache::SessionX::Config::confs ;
++    @tests = 
++	grep { ! /(Mysql|Postgres)/ } # don't test DBMS-based managers
++       	@Apache::SessionX::Config::confs ;
+     }
+ 
+ %stdargs = (
+@@ -403,6 +405,10 @@
+         $> = $uid ;
+         }
+ 
++    foreach my $key (keys %{$Apache::SessionX::Config::param{$cfg}}) {
++	$Apache::SessionX::Config::param{$cfg}{$key} =~
++	    s|/var/lib/ApacheSessionX|$ENV{TESTDIR}|;
++    }
+ 
+     print "\n** Testing configuration '$cfg': $Apache::SessionX::Config::param{$cfg}{Info}...\n" ;
+     my $n = 0 ;
+diff -Naur Apache-SessionX-2.01/testcount.pl Apache-SessionX-2.01.test/testcount.pl
+--- Apache-SessionX-2.01/testcount.pl	2001-08-14 06:37:23.000000000 +0200
++++ Apache-SessionX-2.01.test/testcount.pl	2005-11-28 15:09:38.000000000 +0100
+@@ -1,5 +1,6 @@
+ 
+ use Apache::SessionX ;
++use Apache::SessionX::Config ;
+ 
+ use strict ;
+ 
+@@ -17,6 +18,10 @@
+ my $cfg = shift ;
+ my $x   = shift ;
+ my %sess ;
++foreach my $key (keys %{$Apache::SessionX::Config::param{$cfg}}) {
++    $Apache::SessionX::Config::param{$cfg}{$key} =~
++	s|/var/lib/ApacheSessionX|$ENV{TESTDIR}|;
++}
+ my $obj = tie (%sess, 'Apache::SessionX', undef, { %stdargs, 'config' => $cfg, lazy => 1, create_unknown => 1, Transaction => 1})  or die ("Cannot tie to Apache::SessionX") ;
+         
+ 
