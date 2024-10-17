@@ -8,7 +8,7 @@ Release:	6
 Summary:	An extented persistence framework for session data
 License:	GPL+ or Artistic
 Group:		Development/Perl
-Url:		http://search.cpan.org/dist/%{upstream_name}
+Url:		https://search.cpan.org/dist/%{upstream_name}
 Source0:	http://search.cpan.org/CPAN/authors/id/G/GR/GRICHTER/%{upstream_name}-%{upstream_version}.tar.bz2
 Patch0:		%{name}-2.01.fhs.patch
 Patch1:		%{name}-2.01.test.patch
