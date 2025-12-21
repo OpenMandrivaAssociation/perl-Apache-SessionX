@@ -13,6 +13,7 @@ Source0:	http://search.cpan.org/CPAN/authors/id/G/GR/GRICHTER/%{upstream_name}-%
 Patch0:		%{name}-2.01.fhs.patch
 Patch1:		%{name}-2.01.test.patch
 
+BuildRequires:	make
 BuildRequires:	perl-devel
 BuildRequires:	perl(Apache::Session)
 BuildRequires:	perl(DB_File)
