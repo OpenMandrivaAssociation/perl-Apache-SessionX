@@ -44,8 +44,8 @@ requirements.
 %prep
 %setup -q -n %{upstream_name}-%{upstream_version}
 chmod 644 README
-%patch0
-%patch1 -p 1
+%patch -P0
+%patch -P1 -p 1
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor < /dev/null
@@ -70,51 +70,4 @@ install -d -m 755 %{buildroot}%{_localstatedir}/lib/ApacheSessionX
 %{perl_vendorlib}/Apache
 %attr(-,apache,apache) %{_localstatedir}/lib/ApacheSessionX
 
-
-%changelog
-* Sat May 28 2011 Funda Wang <fwang@mandriva.org> 2.10.0-3mdv2011.0
-+ Revision: 680460
-- mass rebuild
-
-* Wed Jul 29 2009 JÃ©rÃ´me Quelin <jquelin@mandriva.org> 2.10.0-2mdv2011.0
-+ Revision: 402967
-- rebuild
-
-* Wed Jul 30 2008 Thierry Vignaud <tv@mandriva.org> 2.01-6mdv2009.0
-+ Revision: 255284
-- rebuild
-
-  + Pixel <pixel@mandriva.com>
-    - adapt to %%_localstatedir now being /var instead of /var/lib (#22312)
-
-* Wed Dec 26 2007 Guillaume Rousse <guillomovitch@mandriva.org> 2.01-4mdv2008.1
-+ Revision: 138120
-- fix build dependencies
-
-  + Olivier Blin <oblin@mandriva.com>
-    - restore BuildRoot
-
-  + Thierry Vignaud <tv@mandriva.org>
-    - kill re-definition of %%buildroot on Pixel's request
-
-
-* Fri Oct 27 2006 Nicolas LÃ©cureuil <neoclust@mandriva.org> 2.01-3mdv2007.0
-+ Revision: 73229
-- import perl-Apache-SessionX-2.01-3mdk
-
-* Fri Apr 28 2006 Nicolas Lécureuil <neoclust@mandriva.org> 2.01-3mdk
-- Fix SPEC according to Perl Policy
-	- BuildRequires
-
-* Tue Mar 14 2006 Nicolas Lécureuil <neoclust@mandriva.org> 2.01-2mdk
-- Add BuildRequires
-
-* Mon Nov 28 2005 Guillaume Rousse <guillomovitch@mandriva.org> 2.01-1mdk
-- new version 
-- %%{1}mdv2007.1
-- spec cleanup
-- use FHS-compliant /var/lib/ApacheSessionX for storing data
-- don't deal with storage directory permission
-- fix doc files perms
-- fix test to use temp files
 
