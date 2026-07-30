@@ -3,13 +3,13 @@
 
 Name:		perl-%{upstream_name}
 Version:	%{upstream_version}
-Release:	7
+Release:	1
 
 Summary:	An extented persistence framework for session data
 License:	GPL+ or Artistic
 Group:		Development/Perl
 Url:		https://metacpan.org/dist/Apache-SessionX
-Source0:	https://cpan.metacpan.org/authors/id/G/GR/GRICHTER/Apache-SessionX-%{upstream_version}.tar.gz
+Source0:	https://cpan.metacpan.org/authors/id/G/GR/GRICHTER/Apache-SessionX-2.01.tar.gz
 Patch0:		%{name}-2.01.fhs.patch
 Patch1:		%{name}-2.01.test.patch
 
