@@ -3,7 +3,7 @@
 
 Name:		perl-%{upstream_name}
 Version:	%{upstream_version}
-Release:	2
+Release:	1
 
 Summary:	An extented persistence framework for session data
 License:	GPL+ or Artistic
