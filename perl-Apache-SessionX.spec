@@ -3,7 +3,7 @@
 
 Name:		perl-%{upstream_name}
 Version:	%{upstream_version}
-Release:	2
+Release:	3
 
 Summary:	An extented persistence framework for session data
 License:	GPL+ or Artistic
@@ -57,13 +57,12 @@ mkdir %{testdir}
 export TESTDIR=%{testdir}
 make test || :
 
-%clean 
-rm -rf %{testdir}
-
 %install
 %makeinstall_std
 install -d -m 755 %{buildroot}%{_localstatedir}/lib/ApacheSessionX
 
+find %{buildroot} -type f -name '*.pm' -exec chmod -x {} +
+if [ -d %{buildroot}%{_bindir} ]; then find %{buildroot}%{_bindir} -type f -exec chmod 755 {} +; fi
 %files
 %doc CHANGES README
 %{_mandir}/*/*
